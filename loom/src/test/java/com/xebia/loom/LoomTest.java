@@ -23,19 +23,19 @@ public class LoomTest {
             String result = future.join();
            assertEquals("foo", result);
         }
-//        Thread thread = Thread.startVirtualThread(() -> System.out.println("Hello"));
-//        thread.join();
-//
-//
-//        var queue = new SynchronousQueue<String>();
-//
-//        Thread.startVirtualThread(() -> {
-//            try {
-//                Thread.sleep(Duration.ofSeconds(2));
-//                queue.put("done");
-//            } catch (InterruptedException e) { }
-//        });
-//
-//        String msg = queue.take();
+        Thread thread = Thread.startVirtualThread(() -> System.out.println("Hello"));
+        thread.join();
+
+
+        var queue = new SynchronousQueue<String>();
+
+        Thread.startVirtualThread(() -> {
+            try {
+                Thread.sleep(Duration.ofSeconds(2));
+                queue.put("done");
+            } catch (InterruptedException e) { }
+        });
+
+        String msg = queue.take();
     }
 }
